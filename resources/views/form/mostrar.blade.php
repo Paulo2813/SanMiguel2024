@@ -9,7 +9,7 @@
                 <form action="{{ route('alumnos.filtrar') }}" method="GET" class="form-inline">
                     <div class="form-group mr-2">
                         <label for="seccion">Sección:</label>
-                        <select name="seccion" id="seccion" class="form-control">
+                        <select name="seccion_id" id="seccion" class="form-control">
                             <option value="">Todas las secciones</option>
                             @foreach($secciones as $seccion)
                             <option value="{{ $seccion->id }}">{{ $seccion->seccion }}</option>
@@ -17,8 +17,8 @@
                         </select>
                     </div>
                     <div class="form-group mr-2">
-                        <label for="seccion">Aula:</label>
-                        <select name="aula" id="aula" class="form-control">
+                        <label for="aula">Aula:</label>
+                        <select name="aula_id" id="aula" class="form-control">
                             <option value="">Todas las aulas</option>
                             @foreach($aulas as $aula)
                             <option value="{{ $aula->id }}">{{ $aula->aula }}</option>
@@ -29,6 +29,7 @@
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Buscar por nombre">
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">Filtrar</button>
                 </form>
             </div>
