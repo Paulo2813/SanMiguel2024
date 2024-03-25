@@ -15,20 +15,20 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::all(); // Obtener todos los alumnos
-        $secciones = Seccion::all(); // Obtener todas las secciones
-        $aulas = Aula::all(); // Obtener todas las aulas
-        return view('form.mostrar', compact('alumnos', 'secciones', 'aulas')); // Pasar las variables a la vista mostrar.blade.php
+        $alumnos = Alumno::all(); 
+        $secciones = Seccion::all(); 
+        $aulas = Aula::all(); 
+        return view('form.mostrar', compact('alumnos', 'secciones', 'aulas')); 
     }
 
     public function filtrar(Request $request)
     {
-        // Obtener los IDs de sección y aula del request
+        
         $seccionId = $request->seccion_id;
         $aulaId = $request->aula_id;
         $nombre = $request->nombre;
 
-        // Filtrar los alumnos según los IDs de sección, aula y nombre
+        
         $alumnosQuery = Alumno::query();
         if ($seccionId) {
             $alumnosQuery->where('id_seccion', $seccionId);
@@ -41,19 +41,19 @@ class AlumnoController extends Controller
         }
         $alumnos = $alumnosQuery->get();
 
-        // Obtener todas las secciones y aulas para el filtro
+        
         $secciones = Seccion::all();
         $aulas = Aula::all();
 
-        // Devolver la vista con los datos de alumnos, secciones y aulas
+       
         return view('form.mostrar', compact('alumnos', 'secciones', 'aulas'));
     }
 
     public function crear()
     {
-        $alumnos = Alumno::all(); // Obtener todos los alumnos
-        $secciones = Seccion::all(); // Obtener todas las secciones
-        $aulas = Aula::all(); // Obtener todas las aulas
+        $alumnos = Alumno::all(); 
+        $secciones = Seccion::all(); 
+        $aulas = Aula::all(); 
         return view('form.crear', compact('alumnos', 'secciones', 'aulas')); // Pasar las variables a la vista mostrar.blade.php
     }
 }
