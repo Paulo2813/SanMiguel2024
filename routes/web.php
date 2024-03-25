@@ -33,6 +33,11 @@ Route::get('/crear', [AlumnoController::class, 'crear'])->name('alumnos.crear');
 
 //secciones
 // Route::get('/alumnos', [SeccionController::class, 'index'])->name('secciones.index');
+// Route::post('/alumnos/importar', [AlumnoController::class, 'importar'])->name('alumnos.importar');
+Route::post('/alumnos/importar', [AlumnoController::class, 'importar'])->name('alumnos.importar');
+Route::get('/alumnos/exportar', [AlumnoController::class, 'exportar'])->name('alumnos.exportar');
+
+
 
 
 

@@ -31,6 +31,21 @@
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Filtrar</button>
+
+                </form>
+                <form action="{{ route('alumnos.importar') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-md-6">
+                        <input type="file" name="documento">
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" id="exportar" type="submit">Importar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <form action="{{ route('alumnos.exportar') }}" enctype="multipart/form-data">
+                    <button class="btn btn-success" id="exportar" type="submit">Exportar</button>
                 </form>
             </div>
         </div>
