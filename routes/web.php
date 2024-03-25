@@ -29,6 +29,8 @@ Route::get('/crear', function () {return view('form.crear');});
 //alumno
 // Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
 Route::get('/alumnos', [AlumnoController::class, 'filtrar'])->name('alumnos.filtrar');
+Route::get('/crear', [AlumnoController::class, 'crear'])->name('alumnos.crear');
+
 //secciones
 // Route::get('/alumnos', [SeccionController::class, 'index'])->name('secciones.index');
 
