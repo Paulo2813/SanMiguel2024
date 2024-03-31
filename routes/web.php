@@ -29,7 +29,15 @@ Route::get('/crear', function () {return view('form.crear');});
 //alumno
 // Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
 Route::get('/alumnos', [AlumnoController::class, 'filtrar'])->name('alumnos.filtrar');
-Route::get('/crear', [AlumnoController::class, 'crear'])->name('alumnos.crear');
+// Route::get('/crear', [AlumnoController::class, 'crear'])->name('alumnos.crear');
+Route::match(['get', 'post'], '/crear', [AlumnoController::class, 'crear'])->name('alumnos.crear');
+
+Route::delete('/alumnos/{id}', [AlumnoController::class, 'eliminar'])->name('alumnos.eliminar');
+
+
+
+
+
 
 //secciones
 // Route::get('/alumnos', [SeccionController::class, 'index'])->name('secciones.index');

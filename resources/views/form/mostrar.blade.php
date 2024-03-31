@@ -75,7 +75,11 @@
                         <td>{{-- Aquí puedes mostrar la asistencia del alumno --}}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-primary">Editar</a>
-                            <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                            <form action="{{ route('alumnos.eliminar', $alumno->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este alumno?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
