@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-
+    
     <div class="login">
     
         <form action="{{ route('alumnos.crear') }}" method="POST">

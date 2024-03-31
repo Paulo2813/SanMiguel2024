@@ -107,13 +107,64 @@ class AlumnoController extends Controller
         return Excel::download(new AlumnosExport($alumnos), 'alumnos.xlsx');
     }
 
+    public function editar($id)
+    {
+        $alumno = Alumno::findOrFail($id);
+        $secciones = Seccion::all(); 
+        $aulas = Aula::all(); 
+        return view('form.editar', compact('alumno', 'secciones', 'aulas'));
+    }
+
+
+        
+
+    public function actualizar(Request $request, $id)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'seccion_id' => 'required|integer',
+            'aula_id' => 'required|integer',
+            'evaluacion1' => 'nullable|numeric|min:0|max:20',
+            'evaluacion2' => 'nullable|numeric|min:0|max:20',
+        ]);
+    
+        $alumno = Alumno::findOrFail($id);
+        $alumno->nombre = $request->nombre;
+        $alumno->id_seccion = $request->seccion_id;
+        $alumno->id_aula = $request->aula_id;
+        $alumno->evaluacion1 = $request->evaluacion1;
+        $alumno->evaluacion2 = $request->evaluacion2;
+        $seccionId = $alumno->id_seccion;
+
+        $alumno->save();
+
+        return redirect()->route('alumnos.seccion', ['id' => $seccionId])->with('success', 'Alumno editado correctamente.');
+        
+
+        
+
+    }
     public function eliminar($id)
     {
         $alumno = Alumno::findOrFail($id);
+        $seccionId = $alumno->id_seccion;
         $alumno->delete();
     
-        return redirect()->route('alumnos.filtrar')->with('success', 'Alumno eliminado correctamente.');
+        return redirect()->route('alumnos.seccion', ['id' => $seccionId])->with('success', 'Alumno eliminado correctamente.');
     }
     
+    public function alumnosPorSeccion($id)
+    {
+        $alumnos = Alumno::where('id_seccion', $id)->get();
+        
+        $secciones = Seccion::all();
+        $aulas = Aula::all();
+
+        $seccion = Seccion::findOrFail($id);
+        
+        return view('alumnos_por_seccion', compact('alumnos', 'seccion', 'secciones', 'aulas'));
+    }
+    
+
 }
 

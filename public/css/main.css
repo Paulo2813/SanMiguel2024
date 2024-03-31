@@ -1,0 +1,32 @@
+.cajaMain{
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+}
+.textMain{
+    color: white;
+}
+.botonesMain {
+    background-color: #f5af53; 
+    border: 1px solid #dee2e6; 
+    border-radius: 0; 
+    color: #343a40; 
+    transition: all 0.3s ease; 
+    text-decoration: none; 
+    width: 600px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.botonesMain:hover {
+    background-color: #e9ecef; 
+    text-decoration: none; 
+}
+
+/* Estilo para los enlaces activos */
+.botonesMain.active {
+    background-color: #007bff; 
+    border-color: #007bff; 
+    color: #fff;
+}

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Seccion;
+use App\Models\Alumno;
+use App\Models\Aula;
+
+
 
 class HomeController extends Controller
 {
@@ -21,8 +26,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // En el controlador
     public function index()
     {
-        return view('home');
+        $secciones = Seccion::all();
+        return view('home')->with('secciones', $secciones);
     }
+
 }
+

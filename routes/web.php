@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeccionController;
 
 /*
@@ -34,6 +35,17 @@ Route::match(['get', 'post'], '/crear', [AlumnoController::class, 'crear'])->nam
 
 Route::delete('/alumnos/{id}', [AlumnoController::class, 'eliminar'])->name('alumnos.eliminar');
 
+Route::get('/alumnos/{id}/editar', [AlumnoController::class, 'editar'])->name('alumnos.editar');
+Route::post('/alumnos/{id}/editar', [AlumnoController::class, 'actualizar'])->name('alumnos.actualizar');
+Route::put('/alumnos/{id}/editar', [AlumnoController::class, 'actualizar'])->name('alumnos.actualizar');
+
+Route::get('/secciones/{id}', [HomeController::class,'show'])->name('secciones.show');
+
+//filtro por secciones 
+Route::get('/alumnos/seccion/{id}', [AlumnoController::class, 'alumnosPorSeccion'])->name('alumnos.seccion');
+
+
+
 
 
 
@@ -49,7 +61,6 @@ Route::get('/alumnos/exportar', [AlumnoController::class, 'exportar'])->name('al
 
 
 
-Route::get('/editar', function () {return view('form.editar');}); 
 
 
 

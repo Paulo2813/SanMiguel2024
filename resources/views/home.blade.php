@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="/css/main.css">
 
 @section('content')
 <div class="container">
@@ -14,7 +15,12 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h2>Secciones</h2>
+                    <div class="cajaMain">
+                        @foreach($secciones as $seccion)
+                            <a href="{{ route('alumnos.seccion', $seccion->id) }}" class="botonesMain"><h1 class="textMain">{{ $seccion->seccion }}</h1></a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
